@@ -1,0 +1,155 @@
+:root {
+    --bg: #f4f6f9;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --input-bg: #ffffff;
+    --accent: #6366f1;
+    --ai-bg: #e0f2fe;
+}
+
+.dark {
+    --bg: #121826;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --input-bg: #243041;
+    --ai-bg: #1f2a3c;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* LOGO SECTION */
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto 15px auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-container h1 {
+    margin: 5px 0;
+    font-size: 32px;
+}
+
+.tagline {
+    color: var(--accent);
+    font-size: 14px;
+}
+
+/* TOP CONTROLS */
+
+.top-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+/* DASHBOARD */
+
+.dashboard {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card {
+    flex: 1;
+    background: var(--card-bg);
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* FORM & BUDGET */
+
+.form,
+.budget-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+input,
+select {
+    padding: 9px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    flex: 1;
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+button {
+    padding: 9px 14px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* RECORDS */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: var(--card-bg);
+    padding: 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+}
+
+/* CHART */
+
+.chart-box {
+    width: 450px;
+    margin: 30px auto;
+}
+
+/* AI SECTIONS */
+
+.ai-section,
+.ai-chat {
+    background: var(--ai-bg);
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}

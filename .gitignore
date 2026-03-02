@@ -1,0 +1,19 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# VS Code Settings
+.vscode/
+
+# Node (future use)
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Mac system files
+.AppleDouble
+.LSOverride
