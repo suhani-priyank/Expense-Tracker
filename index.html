@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101827">
+    <meta name="description" content="A modern personal finance dashboard to track income, expenses, budgets and savings.">
+    <title>SpendWise — Personal Finance</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <a class="brand" href="#" aria-label="SpendWise home">
+            <span class="brand-mark">S<span>↗</span></span>
+            <span class="brand-copy"><strong>spendwise</strong><small>PERSONAL FINANCE</small></span>
+        </a>
+        <div class="side-label">WORKSPACE</div>
+        <a class="nav-item active" href="#overview"><span class="nav-icon">▦</span> Overview</a>
+        <a class="nav-item" href="#transactions"><span class="nav-icon">↕</span> Transactions</a>
+        <a class="nav-item" href="#analytics"><span class="nav-icon">▥</span> Analytics</a>
+        <a class="nav-item" href="#budget"><span class="nav-icon">◉</span> Budget planner</a>
+        <div class="sidebar-bottom">
+            <div class="side-tip">
+                <span class="tip-spark">✳</span>
+                <strong>Small steps add up.</strong>
+                <p>Build better money habits, one day at a time.</p>
+            </div>
+            <button id="themeToggle" class="sidebar-theme" type="button"><span>◐</span> Switch appearance</button>
+            <div class="profile">
+                <div class="avatar">S</div>
+                <div><strong>Your workspace</strong><small>Personal account</small></div>
+                <span class="profile-dots">•••</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+        <header class="topbar">
+            <div class="mobile-brand"><span class="brand-mark">S<span>↗</span></span><strong>spendwise</strong></div>
+            <div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div>
+            <div class="topbar-actions">
+                <span class="today-pill"><span class="status-dot"></span> Your money, in focus</span>
+                <button id="resetBtn" class="button button-quiet" type="button">Reset data</button>
+            </div>
+        </header>
+
+        <section class="welcome-row">
+            <div>
+                <p class="eyebrow">YOUR FINANCIAL SNAPSHOT</p>
+                <h1>Make your money <span>make sense.</span></h1>
+                <p class="welcome-subtitle">A clearer view of what comes in, what goes out, and what you keep.</p>
+            </div>
+            <div class="period-controls">
+                <label class="sr-only" for="monthPicker">Choose month</label>
+                <input type="month" id="monthPicker" aria-label="Choose month">
+                <label class="sr-only" for="sortOption">Sort transactions</label>
+                <select id="sortOption" aria-label="Sort transactions">
+                    <option value="latest">Latest first</option>
+                    <option value="oldest">Oldest first</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="summary-grid" aria-label="Financial summary">
+            <article class="metric-card balance-card">
+                <div class="metric-top"><span class="metric-label">Total money</span><span class="metric-icon balance-icon">↗</span></div>
+                <p class="metric-value" id="savings">₹0</p>
+                <div class="metric-foot"><span class="metric-dot"></span><span>Income minus expenses</span></div>
+                <div class="balance-decoration" aria-hidden="true">₹</div>
+            </article>
+            <article class="metric-card">
+                <div class="metric-top"><span class="metric-label">Total income</span><span class="metric-icon income-icon">↓</span></div>
+                <p class="metric-value" id="income">₹0</p>
+                <div class="metric-foot"><span class="mini-indicator positive">↗</span><span>Money received</span></div>
+                <div class="metric-bar"><span class="income-bar"></span></div>
+            </article>
+            <article class="metric-card">
+                <div class="metric-top"><span class="metric-label">Total expenses</span><span class="metric-icon expense-icon">↑</span></div>
+                <p class="metric-value" id="expense">₹0</p>
+                <div class="metric-foot"><span class="mini-indicator negative">↗</span><span>Money spent</span></div>
+                <div class="metric-bar"><span class="expense-bar"></span></div>
+            </article>
+        </section>
+
+        <section class="content-grid">
+            <article class="panel transaction-panel" id="transactions">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">KEEP THINGS ORGANIZED</p><h2>Add a transaction</h2><p class="panel-subtitle">Record the details and keep your dashboard up to date.</p></div>
+                    <span class="heading-icon">＋</span>
+                </div>
+                <div class="transaction-form">
+                    <div class="field"><label for="type">Transaction type</label><select id="type"><option value="">Choose type</option><option value="income">Income</option><option value="expense">Expense</option></select></div>
+                    <div class="field"><label for="category">Category</label><select id="category"><option value="">Choose category</option><option value="Salary">Salary</option><option value="Food">Food & dining</option><option value="Shopping">Shopping</option><option value="Travel">Travel</option><option value="Bills">Bills & utilities</option><option value="Other">Other</option></select></div>
+                    <div class="field field-wide"><label for="desc">Description</label><input type="text" id="desc" placeholder="e.g. Monthly stipend" maxlength="100"></div>
+                    <div class="field"><label for="amount">Amount (₹)</label><input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01"></div>
+                    <div class="field"><label for="date">Date</label><input type="date" id="date"></div>
+                    <button id="addBtn" class="button button-primary form-submit" type="button"><span>＋</span> Add transaction</button>
+                </div>
+            </article>
+
+            <article class="panel budget-panel" id="budget">
+                <div class="panel-heading">
+                    <div><p class="eyebrow">SPEND WITH INTENTION</p><h2>Monthly budget</h2><p class="panel-subtitle">Give your spending a healthy boundary.</p></div>
+                    <span class="heading-icon budget-heading-icon">◎</span>
+                </div>
+                <div class="budget-visual">
+                    <div class="budget-ring"><div class="budget-ring-inner"><span class="ring-caption">MONTHLY LIMIT</span><strong id="budgetRingAmount">₹0</strong><small id="budgetPercent">Set a budget</small></div></div>
+                    <div class="budget-copy"><span class="budget-status"><span class="status-dot"></span> Budget overview</span><p id="budgetInfo">Set a monthly budget to start tracking your spending progress.</p></div>
+                </div>
+                <div class="budget-entry"><label class="sr-only" for="budgetInput">Monthly budget amount</label><input type="number" id="budgetInput" min="1" step="1" placeholder="Enter monthly limit"><button id="setBudgetBtn" class="button button-dark" type="button">Set budget <span>→</span></button></div>
+                <div class="budget-legend"><span><i class="legend-dot spent-dot"></i>Spent</span><span><i class="legend-dot remaining-dot"></i>Remaining</span></div>
+            </article>
+        </section>
+
+        <section class="lower-grid">
+            <article class="panel records-panel">
+                <div class="panel-heading records-heading">
+                    <div><p class="eyebrow">YOUR MONEY MOVEMENT</p><h2>Recent transactions</h2></div>
+                    <span class="records-count" id="recordsCount">0 records</span>
+                </div>
+                <ul id="transactionList" class="transaction-list"></ul>
+                <div id="emptyState" class="empty-state"><div class="empty-illustration">↗</div><strong>Your story starts here</strong><p>Add your first transaction to see your activity appear here.</p></div>
+            </article>
+            <article class="panel analytics-panel" id="analytics">
+                <div class="panel-heading"><div><p class="eyebrow">AT A GLANCE</p><h2>Cash flow</h2><p class="panel-subtitle">Income compared with expenses.</p></div><span class="chart-badge">LIVE</span></div>
+                <div class="chart-legend"><span><i class="legend-dot income-dot"></i>Income</span><span><i class="legend-dot expense-dot"></i>Expenses</span></div>
+                <div class="chart-box"><canvas id="financeChart" aria-label="Income and expense chart"></canvas></div>
+            </article>
+        </section>
+
+        <section class="insights-grid">
+            <article class="insight-card ai-section"><div class="insight-symbol">✳</div><div class="insight-content"><p class="eyebrow">SMART MONEY NOTE</p><h2>Your financial insight</h2><p id="aiText">Add your budget and transactions to get a personalized spending summary.</p></div></article>
+            <article class="insight-card ask-card ai-chat"><div class="insight-symbol chat-symbol">✧</div><div class="insight-content"><p class="eyebrow">QUICK GUIDANCE</p><h2>Ask your money coach</h2><p class="coach-subtitle">Get simple tips for saving and budgeting.</p><div class="chat-input"><input type="text" id="aiQuestion" placeholder="Ask about saving, food, budget…" aria-label="Ask a finance question"><button id="askBtn" class="button button-primary" type="button">Ask <span>→</span></button></div><p id="aiResponse" class="ai-response" aria-live="polite"></p></div></article>
+        </section>
+        <footer class="footer"><span>SpendWise <span class="footer-dot">•</span> A little more clarity, every day.</span><span>Designed for mindful money habits <span class="footer-heart">♥</span></span></footer>
+    </main>
+</div>
+<script src="js/script.js"></script>
+</body>
+</html>
